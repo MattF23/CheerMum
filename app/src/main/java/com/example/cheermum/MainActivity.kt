@@ -1,17 +1,10 @@
 package com.example.cheermum
 
 import android.os.Bundle
+import android.widget.Button
+import android.content.Intent
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.cheermum.ui.theme.CheerMumTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,34 +12,21 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.home)
 
-        /*setContent {
-            CheerMumTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }*/
+
     }
-    fun onResume(savedInstanceState: Bundle?){
+    override fun onResume(){
+        super.onResume()
         setContentView(R.layout.home)
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Welcome to CheerMum! Here you can find all of the settings available to you.",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CheerMumTheme {
-        Greeting("Android")
+        //Move to wifi config activity
+        findViewById<Button>(R.id.wifi_button).setOnClickListener{
+            val intent = Intent(this@MainActivity, WifiConfigActivity::class.java)
+            startActivity(intent)
+        }
+        //Move to suggestion config activity
+        findViewById<Button>(R.id.suggestion_button).setOnClickListener {
+            val intent = Intent(this@MainActivity, SuggestionConfigActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -5,4 +5,14 @@
     <!--Buttons-->
     <string name="wifi_config">Configure Wifi</string>
     <string name="suggestion_config">Suggestion Settings</string>
+
+    <!--Text Wifi Config-->
+    <string name="Wifi_Welcome">Before your Bear can connect to your phone. It needs to connect to your local network.
+        \nPlug your phone into your Bear and enter you wifi name and password to begin.</string>
+    <!--Buttons-->
+    <string name="Home">Go Home</string>
+
+    <!--Text Suggestion Config-->
+    <string name="Suggestion_Welcome">Configure your bears suggestions to your hearts desire!</string>
+
 </resources>
