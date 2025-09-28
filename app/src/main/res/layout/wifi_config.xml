@@ -10,10 +10,35 @@
         android:layout_height="0dp"
         android:layout_marginTop="50dp"
         android:layout_weight="1"
-        android:text="@string/Suggestion_Welcome"
+        android:text="@string/Wifi_Welcome"
         android:textSize="22sp"
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"/>
 
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/uuid"
+        android:autofillHints="username"/>
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="20dp"
+        android:inputType="textPassword"
+        android:autofillHints="password" />
+
+    <Button
+        android:id="@+id/Submit_wifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:shadowColor="@color/green"
+        android:text="@string/submit" />
 
     <Button
         android:id="@+id/Go_home"

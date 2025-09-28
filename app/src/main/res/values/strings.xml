@@ -9,10 +9,20 @@
     <!--Text Wifi Config-->
     <string name="Wifi_Welcome">Before your Bear can connect to your phone. It needs to connect to your local network.
         \nPlug your phone into your Bear and enter you wifi name and password to begin.</string>
+    <string name="uuid">Wifi uuid</string>
+    <string name="password">Wifi password</string>
     <!--Buttons-->
     <string name="Home">Go Home</string>
+    <string name="submit">Send</string>
 
     <!--Text Suggestion Config-->
     <string name="Suggestion_Welcome">Configure your bears suggestions to your hearts desire!</string>
+
+    <!--Suggestion switches-->
+    <string name="Suggest_yoga">Suggest Yoga</string>
+    <string name="Suggest_outside">Suggest going outside</string>
+
+    <!--Buttons-->
+    <string name="save">Save</string>
 
 </resources>
