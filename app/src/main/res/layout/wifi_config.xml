@@ -15,7 +15,7 @@
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"/>
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/WifiName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -24,7 +24,7 @@
         android:autofillHints="username"/>
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/WifiPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
