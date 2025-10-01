@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-feature android:name="android.hardware.usb.host"></uses-feature>
-    <uses-permission android:name="android.permission.MANAGE_DEVICE_POLICY_USB_FILE_TRANSFER"></uses-permission>
+    <uses-feature android:name="android.hardware.usb.host"/>
+    <uses-permission android:name="android.permission.MANAGE_DEVICE_POLICY_USB_FILE_TRANSFER"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CheerMum" >
+        android:theme="@style/Theme.CheerMum"
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".MainActivity"

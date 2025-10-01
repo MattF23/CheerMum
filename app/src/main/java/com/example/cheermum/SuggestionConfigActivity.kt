@@ -32,3 +32,7 @@ class SuggestionConfigActivity : ComponentActivity(){
         }
     }
 }
+
+data class Response(val response: Int){
+
+}

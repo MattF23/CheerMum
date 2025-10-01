@@ -18,17 +18,22 @@ class WifiConfigActivity : ComponentActivity(){
         setContentView(R.layout.wifi_config)
 
         //Information!
-        val uuid = findViewById<EditText>(R.id.WifiName).text
-        val password = findViewById<EditText>(R.id.WifiPassword).text
+        val uuid = findViewById<EditText>(R.id.WifiName).text.toString()
+        val password = findViewById<EditText>(R.id.WifiPassword).text.toString()
 
         //send data button
         findViewById<Button>(R.id.Submit_wifi).setOnClickListener {
             val wifiInfo = mapOf("uuid" to uuid, "password" to password)//Send this to pi somehow
+
+            saveToJson(wifiInfo)
         }
 
         //Go home button
         findViewById<Button>(R.id.Go_home).setOnClickListener {
             finish()
         }
+    }
+    private fun saveToJson(file: Map<String, String>){
+
     }
 }
