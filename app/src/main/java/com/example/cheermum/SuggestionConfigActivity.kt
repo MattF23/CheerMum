@@ -20,8 +20,10 @@ class SuggestionConfigActivity : ComponentActivity(){
     var isReadable = false
 
     //Information
-    val settingsPath = "settings.json"
-    val settingsFile = File(settingsPath)
+    val settingsSwitchesPath = "settingsSwitches.json"
+    val settingsTextPath = "settingsText.json"
+    val settingsSwitchesFile = File(settingsSwitchesPath)
+    val settingsTextFile = File(settingsTextPath)
     var suggestYogaValue: Boolean = true
     var suggestOutsideValue: Boolean = true
     val yogaMessageText: EditText = findViewById(R.id.yoga_message)
@@ -41,8 +43,11 @@ class SuggestionConfigActivity : ComponentActivity(){
         super.onResume()
         setContentView(R.layout.suggestion_config)
 
-        if(settingsFile.exists()){
-            val jsonString = settingsFile.readText()
+        if(settingsSwitchesFile.exists() && settingsTextFile.exists()){
+            val jsonObj = JSONObject(settingsSwitchesFile.readText())
+            //settingsSwitches = jsonObj.toMap()
+
+            val jsonTextString = settingsSwitchesFile.readText()
 
         }
 
@@ -58,7 +63,7 @@ class SuggestionConfigActivity : ComponentActivity(){
 
         //Submit settings button
         findViewById<Button>(R.id.Save).setOnClickListener {
-            val arrayOfJsons = getJsons()
+            save()
 
             //Check if usb plugged in and available
             if(Environment.MEDIA_MOUNTED == state){
@@ -89,10 +94,10 @@ class SuggestionConfigActivity : ComponentActivity(){
 
     override fun onDestroy() {
         super.onDestroy()
-        val jsons = getJsons()
+        val jsons = save()
     }
 
-    fun getJsons(): Array<JSONObject>{
+    fun save(){
         settingsSwitches.put("yoga_suggestions", suggestYogaValue)
         settingsSwitches.put("outside_suggestions", suggestOutsideValue)
 
@@ -101,9 +106,7 @@ class SuggestionConfigActivity : ComponentActivity(){
         settingsText.put("yoga_message", yogaMessage)
         settingsText.put("outside_message", outsideMessage)
 
-        val switchJson = JSONObject(settingsSwitches)
-        val textJson = JSONObject(settingsText)
-
-        return arrayOf(switchJson, textJson)
+        File("settingsSwitches.json").writeText(settingsSwitches.toString())
+        File("settingsText.json").writeText(settingsText.toString())
     }
 }
