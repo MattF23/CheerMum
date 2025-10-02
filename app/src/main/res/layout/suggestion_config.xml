@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/cheerMum_blue">
+
 
     <TextView
         android:id="@+id/SettingsTitle"
@@ -10,6 +12,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="50dp"
         android:layout_weight="1"
+        android:background="@color/cheerMum_pink"
         android:text="@string/Suggestion_Welcome"
         android:textSize="22sp"
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"/>
@@ -20,6 +23,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="50dp"
         android:layout_weight="1"
+        android:background="@color/cheerMum_pink"
         android:text="@string/Settings_tutorial"
         android:textSize="22sp"
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"/>
@@ -62,7 +66,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:shadowColor="@color/green"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/cheerMum_pink"
         android:text="@string/save" />
 
     <Button
@@ -70,6 +75,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/cheerMum_yellow"
         android:text="@string/Home" />
 
 
