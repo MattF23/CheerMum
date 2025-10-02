@@ -16,7 +16,10 @@
     <string name="submit">Send</string>
 
     <!--Text Suggestion Config-->
+    <string name="Settings_tutorial">Here you can turn on and off certain settings as well as customise your bear\'s messages!</string>
     <string name="Suggestion_Welcome">Configure your bears suggestions to your hearts desire!</string>
+    <string name="YogaSuggestMessage">Yoga Suggestion Message</string>
+    <string name="OutsideSuggestionMessage">Go Outside Suggestion Message</string>
 
     <!--Suggestion switches-->
     <string name="Suggest_yoga">Suggest Yoga</string>

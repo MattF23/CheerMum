@@ -5,6 +5,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
+import org.json.JSONObject
 
 
 class WifiConfigActivity : ComponentActivity(){
@@ -25,15 +26,12 @@ class WifiConfigActivity : ComponentActivity(){
         findViewById<Button>(R.id.Submit_wifi).setOnClickListener {
             val wifiInfo = mapOf("uuid" to uuid, "password" to password)//Send this to pi somehow
 
-            saveToJson(wifiInfo)
+            val json = JSONObject(wifiInfo)
         }
 
         //Go home button
         findViewById<Button>(R.id.Go_home).setOnClickListener {
             finish()
         }
-    }
-    private fun saveToJson(file: Map<String, String>){
-
     }
 }

@@ -5,12 +5,22 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/SettingsTitle"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="50dp"
         android:layout_weight="1"
         android:text="@string/Suggestion_Welcome"
+        android:textSize="22sp"
+        android:textAppearance="@style/TextAppearance.Compat.Notification.Title"/>
+
+    <TextView
+        android:id="@+id/SettingsExplanation"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:layout_weight="1"
+        android:text="@string/Settings_tutorial"
         android:textSize="22sp"
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"/>
 
@@ -20,12 +30,32 @@
         android:layout_height="wrap_content"
         android:text="@string/Suggest_yoga" />
 
+    <EditText
+        android:id="@+id/yoga_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:labelFor="@id/yoga_message"
+        android:text="@string/YogaSuggestMessage"
+        android:autofillHints="username"/>
+
     <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/switch_outside"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="@string/Suggest_outside" />
+
+    <EditText
+        android:id="@+id/outside_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:labelFor="@id/outside_message"
+        android:text="@string/OutsideSuggestionMessage"
+        android:autofillHints="username"/>
 
     <Button
         android:id="@+id/Save"
