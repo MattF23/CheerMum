@@ -21,7 +21,6 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/cheerMum_pink"
         android:text="@string/Suggestion_Welcome"
         android:textSize="25sp"
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"/>

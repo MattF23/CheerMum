@@ -29,28 +29,26 @@ class SuggestionConfigActivity : ComponentActivity(){
         //val state: String? = Environment.getExternalStorageState()
         val yogaMessage: EditText = findViewById(R.id.yoga_message)
         val outsideMessage: EditText = findViewById(R.id.outside_message)
-        var settingsSwitches = JSONObject(mapOf("yoga_suggestion" to true, "outside_suggestion" to true))
-        var settingsText = JSONObject(mapOf("yoga_message" to yogaMessage.text.toString(), "outside_message" to outsideMessage.text.toString()))
+        //Default settings
+        var settings = JSONObject(mapOf("yoga_suggestion" to true, "outside_suggestion" to true,
+            "yoga_message" to yogaMessage.text.toString(), "outside_message" to outsideMessage.text.toString()))
 
         //Programmatically set values of switches and text when app is first launched
-        val file = File(filesDir, "settingsSwitches.json")
-        val fileText = File(filesDir, "settingsText.json")
-        if(!file.exists() || !fileText.exists()){
-            save(settingsSwitches, settingsText, yogaMessage.text.toString(), outsideMessage.text.toString())
+        val file = File(filesDir, "settings.json")
+        if(!file.exists()){
+            save(settings,yogaMessage.text.toString(), outsideMessage.text.toString())
         }
-        settingsSwitches = JSONObject(file.inputStream().readBytes().toString(Charsets.UTF_8))
-        settingsText = JSONObject(File(filesDir, "settingsText.json").inputStream().readBytes().toString(Charsets.UTF_8))
+        settings = JSONObject(file.inputStream().readBytes().toString(Charsets.UTF_8))
 
         //Text
-        yogaMessage.setText(settingsText.getString("yoga_message"))
-        outsideMessage.setText(settingsText.getString("outside_message"))
+        yogaMessage.setText(settings.getString("yoga_message"))
+        outsideMessage.setText(settings.getString("outside_message"))
 
         //switches
         val yogaSwitch = findViewById<MaterialSwitch>(R.id.switch_yoga)
         val outsideSwitch = findViewById<MaterialSwitch>(R.id.switch_outside)
-        yogaSwitch.isChecked = settingsSwitches.getBoolean("yoga_suggestion")
-        outsideSwitch.isChecked = settingsSwitches.getBoolean("outside_suggestion")
-
+        yogaSwitch.isChecked = settings.getBoolean("yoga_suggestion")
+        outsideSwitch.isChecked = settings.getBoolean("outside_suggestion")
 
         yogaSwitch.setOnCheckedChangeListener { _, isChecked ->
             suggestYogaValue = isChecked
@@ -61,7 +59,7 @@ class SuggestionConfigActivity : ComponentActivity(){
 
         //Submit settings button
         findViewById<Button>(R.id.Save).setOnClickListener {
-            save(settingsSwitches, settingsText, yogaMessage.text.toString(), outsideMessage.text.toString())
+            save(settings,yogaMessage.text.toString(), outsideMessage.text.toString())
         }
 
         //Go home button
@@ -69,17 +67,14 @@ class SuggestionConfigActivity : ComponentActivity(){
             finish()
         }
     }
-    fun save(settingsSwitches: JSONObject, settingsText: JSONObject, yogaMessage: String, outsideMessage: String){
-        settingsSwitches.put("yoga_suggestion", suggestYogaValue)
-        settingsSwitches.put("outside_suggestion", suggestOutsideValue)
+    fun save(settings: JSONObject, yogaMessage: String, outsideMessage: String){
+        settings.put("yoga_suggestion", suggestYogaValue)
+        settings.put("outside_suggestion", suggestOutsideValue)
 
-        settingsText.put("yoga_message", yogaMessage)
-        settingsText.put("outside_message", outsideMessage)
+        settings.put("yoga_message", yogaMessage)
+        settings.put("outside_message", outsideMessage)
 
-        var file = File(filesDir, "settingsSwitches.json")
-        file.writeText(settingsSwitches.toString())
-
-        file = File(filesDir, "settingsText.json")
-        file.writeText(settingsText.toString())
+        val file = File(filesDir, "settings.json")
+        file.writeText(settings.toString())
     }
 }

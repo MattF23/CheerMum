@@ -12,7 +12,6 @@
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
         android:contentDescription="@string/Title_description"
-        android:background="@drawable/cheermum_logo_cropped"
         android:src="@drawable/cheermum_logo_cropped"
         app:srcCompat="@drawable/cheermum_logo_cropped" />
 
