@@ -10,6 +10,10 @@
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/Title_description"
+        android:background="@drawable/cheermum_logo_cropped"
+        android:src="@drawable/cheermum_logo_cropped"
         app:srcCompat="@drawable/cheermum_logo_cropped" />
 
     <TextView
@@ -22,14 +26,27 @@
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
         android:textSize="22sp"/>
 
+    <TextView
+        android:id="@+id/uuidView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/uuid" />
+
     <EditText
         android:id="@+id/WifiName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/uuid"
-        android:autofillHints="username"/>
+        android:autofillHints="username"
+        android:labelFor="@id/Submit_wifi"/>
+
+    <TextView
+        android:id="@+id/passwordView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/password" />
 
     <EditText
         android:id="@+id/WifiPassword"
@@ -38,14 +55,15 @@
         android:ems="10"
         android:layout_marginBottom="20dp"
         android:inputType="textPassword"
-        android:autofillHints="password" />
+        android:autofillHints="password"
+        android:labelFor="@id/Submit_wifi"/>
 
     <Button
         android:id="@+id/Submit_wifi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:backgroundTint="@color/cheerMum_pink"
+        android:backgroundTint="@color/cheerMum_yellow"
         android:textColor="@color/black"
         android:text="@string/submit" />
 

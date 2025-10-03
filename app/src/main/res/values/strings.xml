@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CheerMum</string>
     <string name="Welcome">Welcome to CheerMum! Here you can find all of the settings available to you.</string>
+    <string name="Title_description">Cheermum Logo and Title</string>
 
     <!--Buttons-->
     <string name="wifi_config">Configure Wifi</string>
