@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/cheerMum_blue">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/cheermum_logo_cropped" />
 
     <TextView
         android:id="@+id/textView"
@@ -10,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50sp"
         android:layout_weight="1"
+        android:background="@color/cheerMum_pink"
         android:text="@string/Welcome"
         android:textSize="22sp"
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"/>
@@ -18,18 +28,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/wifi_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/cheerMum_yellow"
             android:text="@string/wifi_config" />
 
         <Button
             android:id="@+id/suggestion_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/cheerMum_yellow"
             android:text="@string/suggestion_config" />
     </LinearLayout>
 
