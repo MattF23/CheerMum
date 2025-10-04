@@ -75,6 +75,9 @@ class SuggestionConfigActivity : ComponentActivity(){
         settings.put("outside_message", outsideMessage)
 
         val file = File(filesDir, "settings.json")
-        file.writeText(settings.toString())
+        val message = settings.toString()
+        file.writeText(message)
+
+        sendData(this, message)
     }
 }
