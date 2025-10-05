@@ -9,7 +9,7 @@ import org.eclipse.paho.client.mqttv3.MqttException
 import org.eclipse.paho.client.mqttv3.MqttMessage
 
 fun sendData(applicationContext: Context, message: String){
-    val client = MqttAndroidClient ( applicationContext,"YOUR MQTT BROKER ADDRESS","YOUR CLIENT ID" )
+    val client = MqttAndroidClient(applicationContext,"broker.emqx.io","CheerMum")//null
     val topic = "settings/#"
 
     connect(/*applicationContext, */client)
@@ -62,7 +62,7 @@ fun subscribe(topic: String, client: MqttAndroidClient) {
     try {
         client.subscribe(topic, qos, null, object : IMqttActionListener {
             override fun onSuccess(asyncActionToken: IMqttToken) {
-                // Give your callback on Subscription here
+                Log.i("Subscribe", "Successfully subscribed to topic")
             }override fun onFailure(
                 asyncActionToken: IMqttToken,
                 exception: Throwable
