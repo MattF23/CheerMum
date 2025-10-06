@@ -4,12 +4,15 @@ import android.content.Context
 import android.util.Log
 import org.eclipse.paho.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.IMqttActionListener
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken
 import org.eclipse.paho.client.mqttv3.IMqttToken
+import org.eclipse.paho.client.mqttv3.MqttCallback
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions
 import org.eclipse.paho.client.mqttv3.MqttException
 import org.eclipse.paho.client.mqttv3.MqttMessage
 
 fun sendData(applicationContext: Context, message: String){
-    val client = MqttAndroidClient(applicationContext,"broker.emqx.io","CheerMum")//null
+    val client = MqttAndroidClient(applicationContext,"rule28.i4t.swin.edu.au:1883","CheerMum")//null
     val topic = "settings/#"
 
     connect(/*applicationContext, */client)
@@ -19,24 +22,26 @@ fun sendData(applicationContext: Context, message: String){
 }
 
 fun connect(/*applicationContext: Context, */client: MqttAndroidClient){
-        try {
-            val token = client.connect()
-            token.actionCallback = object : IMqttActionListener {
-                override fun onSuccess(asyncActionToken: IMqttToken)                        {
-               Log.i("Connection", "success ")
-               //connectionStatus = true
-               // Give your callback on connection established here
- }override fun onFailure(asyncActionToken: IMqttToken, exception: Throwable) {
-                    //connectionStatus = false
-                    Log.i("Connection", "failure")
-                 // Give your callback on connection failure here
-                    exception.printStackTrace()
-                }
+    try {
+        Log.i("Connection", "trying")
+        val token = client.connect()
+        token.actionCallback = object : IMqttActionListener {
+            override fun onSuccess(asyncActionToken: IMqttToken){
+                Log.i("Connection", "success ")
+                //connectionStatus = true
+                // Give your callback on connection established here
             }
-        } catch (e: MqttException) {
-            // Give your callback on connection failure here
-            e.printStackTrace()
+            override fun onFailure(asyncActionToken: IMqttToken, exception: Throwable) {
+                //connectionStatus = false
+                Log.i("Connection", "failure")
+                // Give your callback on connection failure here
+                exception.printStackTrace()
+            }
         }
+    } catch (e: MqttException) {
+        // Give your callback on connection failure here
+        e.printStackTrace()
+    }
 }
 
 fun disconnect(client: MqttAndroidClient) {
@@ -58,7 +63,7 @@ fun disconnect(client: MqttAndroidClient) {
         }}
 
 fun subscribe(topic: String, client: MqttAndroidClient) {
-    val qos = 2 // Mention your qos value
+    val qos = 1 // Mention your qos value
     try {
         client.subscribe(topic, qos, null, object : IMqttActionListener {
             override fun onSuccess(asyncActionToken: IMqttToken) {
