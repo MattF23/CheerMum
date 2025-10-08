@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.google.android.material.materialswitch.MaterialSwitch
 import android.widget.EditText
+import android.widget.Toast
 import java.io.File
 import org.json.JSONObject
 
@@ -78,6 +79,9 @@ class SuggestionConfigActivity : ComponentActivity(){
         val message = settings.toString()
         file.writeText(message)
 
-        sendData(this, message)
+        val result = sendData(this, message, file)
+
+        //Toast.makeText(this, "Successfully saved to local device", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
     }
 }
