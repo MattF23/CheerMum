@@ -1,18 +1,17 @@
 package com.example.cheermum
 
 import android.util.Log
-import com.jcraft.jsch.ChannelExec
+import com.jcraft.jsch.ChannelSftp
 import com.jcraft.jsch.JSch
-import kotlinx.coroutines.Runnable
 import java.io.File
 import kotlin.concurrent.thread
 
-fun sendData(file: File): String {
-    val output = StringBuilder()
+fun sendData(file: File): String{
+    var result = ""
     thread {
         try {
             val jsch = JSch()
-            val session = jsch.getSession("matt", "localhost", 22)
+            val session = jsch.getSession("Your local username here", "10.0.2.2", 22)//10.0.2.2 is localhost from android-studio's point of view
             session.setPassword("Your password here")
             session.setConfig("StrictHostKeyChecking", "no")
             session.connect()
@@ -20,65 +19,24 @@ fun sendData(file: File): String {
             if (session.isConnected) {
                 Log.i("Connection", "Is connected!")
             }
-
-            val command = "scp -p -t $file"
-
-            val channel = session.openChannel("exec") as ChannelExec
-            channel.setCommand(command)
-            channel.connect()
-
-            val inputStream = channel.inputStream
-            val buffer = ByteArray(1024)
-            var bytesRead: Int
-
-            while (inputStream.read(buffer).also { bytesRead = it } > 0) {
-                output.append(String(buffer, 0, bytesRead))
+            else{
+                result = "Failed to connect to your bear!"
             }
+
+            val channel = session.openChannel("sftp") as ChannelSftp
+            channel.connect()
+            channel.put(file.toString(), "/home/matt/Desktop/D_drive/Uni_stuff/eng40011/settings.json")
+
             channel.disconnect()
         } catch (e: Exception) {
             e.printStackTrace()
+            result = "Something went wrong"
+
         }
     }
-    var result = ""
-    if (output.toString() == ""){
-        result = "Something went wrong"
+    if (result == ""){
+        result = "Successfully sent settings!"
     }
-    result = result + output.toString()//Returns output if it exists. Error message otherwise
+
     return result
 }
-
-/*class DataSender(): Runnable{
-    override fun run(){
-        try {
-        val jsch = JSch()
-        val session = jsch.getSession("matt", "localhost", 22)
-        session.setPassword("mckinnon24680")
-        session.setConfig("StrictHostKeyChecking", "no")
-        session.connect()
-
-        if (session.isConnected) {
-            Log.i("Connection", "Is connected!")
-        }
-
-        val command = "scp -p -t $file"
-
-        val channel = session.openChannel("exec") as ChannelExec
-        channel.setCommand(command)
-        channel.connect()
-
-        val inputStream = channel.inputStream
-        val buffer = ByteArray(1024)
-        var bytesRead: Int
-        val output = StringBuilder()
-
-        while (inputStream.read(buffer).also { bytesRead = it } > 0) {
-            output.append(String(buffer, 0, bytesRead))
-        }
-        channel.disconnect()
-
-
-        }catch (e: Exception){
-            e.printStackTrace()
-        }
-    }
-}*/

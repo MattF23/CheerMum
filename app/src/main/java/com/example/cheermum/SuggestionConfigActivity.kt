@@ -1,7 +1,6 @@
 package com.example.cheermum
 
 import android.os.Bundle
-//import android.os.Environment
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
@@ -79,9 +78,8 @@ class SuggestionConfigActivity : ComponentActivity(){
         val message = settings.toString()
         file.writeText(message)
 
-        val result = sendData(this, message, file)
+        val result = sendData(file)
 
-        //Toast.makeText(this, "Successfully saved to local device", Toast.LENGTH_SHORT).show()
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
     }
 }
