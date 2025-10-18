@@ -12,7 +12,7 @@ fun sendData(file: File): String{
         try {
             val jsch = JSch()
             val session = jsch.getSession("matt", "10.0.2.2", 22)//10.0.2.2 is localhost from android-studio's point of view
-            session.setPassword("Your password here")
+            session.setPassword("your password here")
             session.setConfig("StrictHostKeyChecking", "no")
             session.connect()
 

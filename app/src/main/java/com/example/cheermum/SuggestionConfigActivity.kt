@@ -83,7 +83,7 @@ class SuggestionConfigActivity : ComponentActivity(){
     fun save(settings: JSONObject, sadnessMusic: String, angryMusic: String){
         //Get volume
         val audio = getSystemService(AUDIO_SERVICE) as AudioManager
-        val volume = audio.getStreamVolume(AudioManager.STREAM_MUSIC).toString() + "%"
+        val volume = (audio.getStreamVolume(AudioManager.STREAM_MUSIC) * 6.6).toInt().toString() + "%"
 
         settings.put("sadness_detection", sadDetectionValue)
         settings.put("anger_detection", angerDetectionValue)
