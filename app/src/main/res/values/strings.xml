@@ -24,8 +24,11 @@
     <string name="OutsideSuggestionMessage">Go Outside Suggestion Message</string>
 
     <!--Suggestion switches-->
-    <string name="Suggest_yoga">Suggest Yoga</string>
-    <string name="Suggest_outside">Suggest going outside</string>
+    <string name="Sadness_detection">Sadness Detection</string>
+    <string name="Anger_detection">Anger Detection</string>
+
+    <string name="WhaleSong">Whales</string>
+    <string name="Violins">Violins</string>
 
     <!--Buttons-->
     <string name="save">Save</string>

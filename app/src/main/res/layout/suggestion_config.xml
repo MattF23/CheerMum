@@ -35,39 +35,55 @@
         android:textAppearance="@style/TextAppearance.Compat.Notification.Title"/>
 
     <com.google.android.material.materialswitch.MaterialSwitch
-        android:id="@+id/switch_yoga"
+        android:id="@+id/switch_sad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="@string/Suggest_yoga" />
+        android:text="@string/Sadness_detection" />
 
-    <EditText
-        android:id="@+id/yoga_message"
+    <RadioGroup
+        android:id="@+id/sad_radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:labelFor="@id/yoga_message"
-        android:text="@string/YogaSuggestMessage"
-        android:autofillHints="username"/>
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/sad_whaleButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/WhaleSong" />
+        <RadioButton
+            android:id="@+id/sad_violinButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Violins" />
+    </RadioGroup>
 
     <com.google.android.material.materialswitch.MaterialSwitch
-        android:id="@+id/switch_outside"
+        android:id="@+id/switch_anger"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:textSize="20sp"
-        android:text="@string/Suggest_outside" />
+        android:text="@string/Anger_detection" />
 
-    <EditText
-        android:id="@+id/outside_message"
+    <RadioGroup
+        android:id="@+id/angry_radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:labelFor="@id/outside_message"
-        android:text="@string/OutsideSuggestionMessage"
-        android:autofillHints="username"/>
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/angry_whaleButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/WhaleSong" />
+        <RadioButton
+            android:id="@+id/angry_violinButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Violins" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/Save"

@@ -11,8 +11,8 @@ fun sendData(file: File): String{
     thread {
         try {
             val jsch = JSch()
-            val session = jsch.getSession("Your local username here", "10.0.2.2", 22)//10.0.2.2 is localhost from android-studio's point of view
-            session.setPassword("Your password here")
+            val session = jsch.getSession("matt", "10.0.2.2", 22)//10.0.2.2 is localhost from android-studio's point of view
+            session.setPassword("mckinnon24680")
             session.setConfig("StrictHostKeyChecking", "no")
             session.connect()
 

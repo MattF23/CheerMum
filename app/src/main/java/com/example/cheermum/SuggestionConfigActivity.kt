@@ -2,10 +2,11 @@ package com.example.cheermum
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.RadioButton
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.google.android.material.materialswitch.MaterialSwitch
-import android.widget.EditText
+import android.widget.RadioGroup
 import android.widget.Toast
 import java.io.File
 import org.json.JSONObject
@@ -13,8 +14,10 @@ import org.json.JSONObject
 
 class SuggestionConfigActivity : ComponentActivity(){
     //Information
-    var suggestYogaValue: Boolean = true
-    var suggestOutsideValue: Boolean = true
+    var sadDetectionValue: Boolean = true
+    var angerDetectionValue: Boolean = true
+    var angrySounds = "Violins"
+    var sadnessSounds = "Whales"
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -26,40 +29,49 @@ class SuggestionConfigActivity : ComponentActivity(){
         setContentView(R.layout.suggestion_config)
 
         //More Information
-        //val state: String? = Environment.getExternalStorageState()
-        val yogaMessage: EditText = findViewById(R.id.yoga_message)
-        val outsideMessage: EditText = findViewById(R.id.outside_message)
-        //Default settings
-        var settings = JSONObject(mapOf("yoga_suggestion" to true, "outside_suggestion" to true,
-            "yoga_message" to yogaMessage.text.toString(), "outside_message" to outsideMessage.text.toString()))
+        val angryRadioGroup = findViewById<RadioGroup>(R.id.angry_radio_group)
+        val sadRadioGroup = findViewById<RadioGroup>(R.id.sad_radio_group)
 
-        //Programmatically set values of switches and text when app is first launched
         val file = File(filesDir, "settings.json")
-        if(!file.exists()){
-            save(settings,yogaMessage.text.toString(), outsideMessage.text.toString())
-        }
-        settings = JSONObject(file.inputStream().readBytes().toString(Charsets.UTF_8))
+        var settings = JSONObject(file.inputStream().readBytes().toString(Charsets.UTF_8))
 
-        //Text
-        yogaMessage.setText(settings.getString("yoga_message"))
-        outsideMessage.setText(settings.getString("outside_message"))
+        if(!file.exists()){
+            save(settings,sadnessSounds, angrySounds)
+        }
+        else{
+            settings = JSONObject(file.inputStream().readBytes().toString(Charsets.UTF_8))
+        }
+
+        setRadioButtons(settings)
 
         //switches
-        val yogaSwitch = findViewById<MaterialSwitch>(R.id.switch_yoga)
-        val outsideSwitch = findViewById<MaterialSwitch>(R.id.switch_outside)
-        yogaSwitch.isChecked = settings.getBoolean("yoga_suggestion")
-        outsideSwitch.isChecked = settings.getBoolean("outside_suggestion")
+        val sadSwitch = findViewById<MaterialSwitch>(R.id.switch_sad)
+        val angrySwitch = findViewById<MaterialSwitch>(R.id.switch_anger)
+        sadSwitch.isChecked = settings.getBoolean("sadness_detection")
+        angrySwitch.isChecked = settings.getBoolean("anger_detection")
 
-        yogaSwitch.setOnCheckedChangeListener { _, isChecked ->
-            suggestYogaValue = isChecked
+        sadSwitch.setOnCheckedChangeListener { _, isChecked ->
+            sadDetectionValue = isChecked
         }
-        outsideSwitch.setOnCheckedChangeListener { _, isChecked ->
-            suggestOutsideValue = isChecked
+        angrySwitch.setOnCheckedChangeListener { _, isChecked ->
+            angerDetectionValue = isChecked
         }
 
+        angryRadioGroup.setOnCheckedChangeListener {
+            group, checkedId ->
+
+            val angryRadioButton = findViewById<RadioButton>(checkedId)
+            angrySounds = angryRadioButton.text.toString()
+        }
+        sadRadioGroup.setOnCheckedChangeListener {
+            group, checkedId ->
+
+            val sadRadioButton = findViewById<RadioButton>(checkedId)
+            sadnessSounds = sadRadioButton.text.toString()
+        }
         //Submit settings button
         findViewById<Button>(R.id.Save).setOnClickListener {
-            save(settings,yogaMessage.text.toString(), outsideMessage.text.toString())
+            save(settings,sadnessSounds, angrySounds)
         }
 
         //Go home button
@@ -67,12 +79,12 @@ class SuggestionConfigActivity : ComponentActivity(){
             finish()
         }
     }
-    fun save(settings: JSONObject, yogaMessage: String, outsideMessage: String){
-        settings.put("yoga_suggestion", suggestYogaValue)
-        settings.put("outside_suggestion", suggestOutsideValue)
+    fun save(settings: JSONObject, sadnessMusic: String, angryMusic: String){
+        settings.put("sadness_detection", sadDetectionValue)
+        settings.put("anger_detection", angerDetectionValue)
 
-        settings.put("yoga_message", yogaMessage)
-        settings.put("outside_message", outsideMessage)
+        settings.put("sadness_music", sadnessMusic)
+        settings.put("angry_music", angryMusic)
 
         val file = File(filesDir, "settings.json")
         val message = settings.toString()
@@ -81,5 +93,23 @@ class SuggestionConfigActivity : ComponentActivity(){
         val result = sendData(file)
 
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
+    }
+    fun setRadioButtons(settings: JSONObject){
+        if(settings.get("sadness_music") == "Whales"){
+            findViewById<RadioButton>(R.id.sad_whaleButton).setChecked(true)
+            findViewById<RadioButton>(R.id.sad_violinButton).setChecked(false)
+        }
+        else if(settings.get("sadness_music") == "Violins"){
+            findViewById<RadioButton>(R.id.sad_whaleButton).setChecked(false)
+            findViewById<RadioButton>(R.id.sad_violinButton).setChecked(true)
+        }
+        if(settings.get("angry_music") == "Whales"){
+            findViewById<RadioButton>(R.id.angry_whaleButton).setChecked(true)
+            findViewById<RadioButton>(R.id.angry_violinButton).setChecked(false)
+        }
+        else if(settings.get("angry_music") == "Violins"){
+            findViewById<RadioButton>(R.id.angry_whaleButton).setChecked(true)
+            findViewById<RadioButton>(R.id.angry_violinButton).setChecked(false)
+        }
     }
 }
