@@ -1,5 +1,6 @@
 package com.example.cheermum
 
+import android.media.AudioManager
 import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioButton
@@ -80,11 +81,17 @@ class SuggestionConfigActivity : ComponentActivity(){
         }
     }
     fun save(settings: JSONObject, sadnessMusic: String, angryMusic: String){
+        //Get volume
+        val audio = getSystemService(AUDIO_SERVICE) as AudioManager
+        val volume = audio.getStreamVolume(AudioManager.STREAM_MUSIC).toString() + "%"
+
         settings.put("sadness_detection", sadDetectionValue)
         settings.put("anger_detection", angerDetectionValue)
 
         settings.put("sadness_music", sadnessMusic)
         settings.put("angry_music", angryMusic)
+
+        settings.put("Volume", volume)
 
         val file = File(filesDir, "settings.json")
         val message = settings.toString()
