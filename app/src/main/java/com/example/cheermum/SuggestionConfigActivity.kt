@@ -118,48 +118,38 @@ class SuggestionConfigActivity : ComponentActivity(){
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
     }
     fun setRadioButtons(settings: JSONObject){
+        val happyGroup = findViewById<RadioGroup>(R.id.happy_radio_group)
+        val sadGroup = findViewById<RadioGroup>(R.id.sad_radio_group)
+        val angryGroup = findViewById<RadioGroup>(R.id.angry_radio_group)
+
         if(settings.get("sadness_music") == "Whales"){
-            setRadioGroup(findViewById(R.id.sad_whaleButton), findViewById(R.id.sad_violinButton),
-                findViewById(R.id.sad_busButton))
+            sadGroup.check(R.id.sad_whaleButton)
         }
         else if(settings.get("sadness_music") == "Violins"){
-            setRadioGroup(findViewById(R.id.sad_violinButton), findViewById(R.id.sad_whaleButton),
-                findViewById(R.id.sad_busButton))
+            sadGroup.check(R.id.sad_violinButton)
         }
         else if(settings.get("sadness_music") == "bus"){
-            setRadioGroup(findViewById(R.id.sad_busButton), findViewById(R.id.sad_violinButton),
-                findViewById(R.id.sad_whaleButton))
+            sadGroup.check(R.id.sad_busButton)
         }
 
         if(settings.get("angry_music") == "Whales"){
-            setRadioGroup(findViewById(R.id.angry_whaleButton), findViewById(R.id.angry_violinButton),
-                findViewById(R.id.angry_busButton))
+            angryGroup.check(R.id.angry_whaleButton)
         }
         else if(settings.get("angry_music") == "Violins"){
-            setRadioGroup(findViewById(R.id.angry_violinButton), findViewById(R.id.angry_whaleButton),
-                findViewById(R.id.angry_busButton))
+            angryGroup.check(R.id.angry_violinButton)
         }
         else if(settings.get("angry_music") == "bus"){
-            setRadioGroup(findViewById(R.id.angry_busButton), findViewById(R.id.angry_violinButton),
-                findViewById(R.id.angry_whaleButton))
+            angryGroup.check(R.id.angry_busButton)
         }
 
         if(settings.get("happy_music") == "Violins"){
-            setRadioGroup(findViewById(R.id.happy_violinButton), findViewById(R.id.happy_busButton),
-                findViewById(R.id.happy_whaleButton))
+            happyGroup.check(R.id.happy_violinButton)
         }
         else if(settings.get("happy_music") == "Whales"){
-            setRadioGroup(findViewById(R.id.happy_whaleButton), findViewById(R.id.happy_violinButton),
-                findViewById(R.id.happy_busButton))
+            happyGroup.check(R.id.happy_whaleButton)
         }
         else if(settings.get("happy_music") == "Bus"){
-            setRadioGroup(findViewById(R.id.happy_busButton), findViewById(R.id.happy_whaleButton),
-                findViewById(R.id.happy_violinButton))
+            happyGroup.check(R.id.happy_busButton)
         }
-    }
-    fun setRadioGroup(trueView: RadioButton, falseView1: RadioButton, falseView2: RadioButton){
-        trueView.setChecked(true)
-        falseView1.setChecked(false)
-        falseView2.setChecked(false)
     }
 }
