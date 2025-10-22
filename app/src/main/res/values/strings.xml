@@ -6,7 +6,7 @@
 
     <!--Buttons-->
     <string name="wifi_config">Configure Wifi</string>
-    <string name="suggestion_config">Suggestion Settings</string>
+    <string name="suggestion_config">Settings</string>
 
     <!--Text Wifi Config-->
     <string name="Wifi_Welcome">Before your Bear can connect to your phone. It needs to connect to your local network.
@@ -17,8 +17,8 @@
     <string name="Home">Go Home</string>
     <string name="submit">Send</string>
 
-    <!--Text Suggestion Config-->
-    <string name="Settings_tutorial">Here you can turn on and off certain settings as well as customise your bear\'s messages!</string>
+    <!--Text Settings Config-->
+    <string name="Settings_tutorial">Here you can turn on and off certain settings as well as choose which sounds to play!</string>
     <string name="Suggestion_Welcome">Configure your bears suggestions to your hearts desire!</string>
     <string name="YogaSuggestMessage">Yoga Suggestion Message</string>
     <string name="OutsideSuggestionMessage">Go Outside Suggestion Message</string>
