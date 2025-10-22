@@ -119,51 +119,47 @@ class SuggestionConfigActivity : ComponentActivity(){
     }
     fun setRadioButtons(settings: JSONObject){
         if(settings.get("sadness_music") == "Whales"){
-            findViewById<RadioButton>(R.id.sad_whaleButton).setChecked(true)
-            findViewById<RadioButton>(R.id.sad_violinButton).setChecked(false)
-            findViewById<RadioButton>(R.id.sad_busButton).setChecked(false)
+            setRadioGroup(findViewById(R.id.sad_whaleButton), findViewById(R.id.sad_violinButton),
+                findViewById(R.id.sad_busButton))
         }
         else if(settings.get("sadness_music") == "Violins"){
-            findViewById<RadioButton>(R.id.sad_whaleButton).setChecked(false)
-            findViewById<RadioButton>(R.id.sad_violinButton).setChecked(true)
-            findViewById<RadioButton>(R.id.sad_busButton).setChecked(false)
+            setRadioGroup(findViewById(R.id.sad_violinButton), findViewById(R.id.sad_whaleButton),
+                findViewById(R.id.sad_busButton))
         }
         else if(settings.get("sadness_music") == "bus"){
-            findViewById<RadioButton>(R.id.sad_whaleButton).setChecked(false)
-            findViewById<RadioButton>(R.id.sad_violinButton).setChecked(false)
-            findViewById<RadioButton>(R.id.sad_busButton).setChecked(true)
+            setRadioGroup(findViewById(R.id.sad_busButton), findViewById(R.id.sad_violinButton),
+                findViewById(R.id.sad_whaleButton))
         }
 
         if(settings.get("angry_music") == "Whales"){
-            findViewById<RadioButton>(R.id.angry_whaleButton).setChecked(true)
-            findViewById<RadioButton>(R.id.angry_violinButton).setChecked(false)
-            findViewById<RadioButton>(R.id.angry_busButton).setChecked(false)
+            setRadioGroup(findViewById(R.id.angry_whaleButton), findViewById(R.id.angry_violinButton),
+                findViewById(R.id.angry_busButton))
         }
         else if(settings.get("angry_music") == "Violins"){
-            findViewById<RadioButton>(R.id.angry_whaleButton).setChecked(true)
-            findViewById<RadioButton>(R.id.angry_violinButton).setChecked(false)
-            findViewById<RadioButton>(R.id.angry_busButton).setChecked(false)
+            setRadioGroup(findViewById(R.id.angry_violinButton), findViewById(R.id.angry_whaleButton),
+                findViewById(R.id.angry_busButton))
         }
         else if(settings.get("angry_music") == "bus"){
-            findViewById<RadioButton>(R.id.angry_whaleButton).setChecked(false)
-            findViewById<RadioButton>(R.id.angry_violinButton).setChecked(false)
-            findViewById<RadioButton>(R.id.angry_busButton).setChecked(true)
+            setRadioGroup(findViewById(R.id.angry_busButton), findViewById(R.id.angry_violinButton),
+                findViewById(R.id.angry_whaleButton))
         }
 
         if(settings.get("happy_music") == "Violins"){
-            findViewById<RadioButton>(R.id.happy_whaleButton).setChecked(false)
-            findViewById<RadioButton>(R.id.happy_violinButton).setChecked(true)
-            findViewById<RadioButton>(R.id.happy_busButton).setChecked(false)
+            setRadioGroup(findViewById(R.id.happy_violinButton), findViewById(R.id.happy_busButton),
+                findViewById(R.id.happy_whaleButton))
         }
         else if(settings.get("happy_music") == "Whales"){
-            findViewById<RadioButton>(R.id.happy_whaleButton).setChecked(true)
-            findViewById<RadioButton>(R.id.happy_violinButton).setChecked(false)
-            findViewById<RadioButton>(R.id.happy_busButton).setChecked(false)
+            setRadioGroup(findViewById(R.id.happy_whaleButton), findViewById(R.id.happy_violinButton),
+                findViewById(R.id.happy_busButton))
         }
         else if(settings.get("happy_music") == "Bus"){
-            findViewById<RadioButton>(R.id.happy_whaleButton).setChecked(false)
-            findViewById<RadioButton>(R.id.happy_violinButton).setChecked(false)
-            findViewById<RadioButton>(R.id.happy_busButton).setChecked(true)
+            setRadioGroup(findViewById(R.id.happy_busButton), findViewById(R.id.happy_whaleButton),
+                findViewById(R.id.happy_violinButton))
         }
+    }
+    fun setRadioGroup(trueView: RadioButton, falseView1: RadioButton, falseView2: RadioButton){
+        trueView.setChecked(true)
+        falseView1.setChecked(false)
+        falseView2.setChecked(false)
     }
 }
