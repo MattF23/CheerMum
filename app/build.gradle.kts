@@ -41,10 +41,6 @@ android {
 }
 
 dependencies {
-    //implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.4")
-    //implementation("org.eclipse.paho:org.eclipse.paho.android.service:1.1.1")
-    //implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
-
     implementation("com.github.mwiede:jsch:0.2.11")
 
     implementation(libs.androidx.core.ktx)
