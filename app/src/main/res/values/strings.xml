@@ -18,7 +18,7 @@
     <string name="submit">Send</string>
 
     <!--Text Settings Config-->
-    <string name="Settings_tutorial">Here you can turn on and off certain settings as well as choose which sounds to play!</string>
+    <string name="Settings_tutorial">Configure All your settings here!</string>
     <string name="Suggestion_Welcome">Configure your bears suggestions to your hearts desire!</string>
     <string name="YogaSuggestMessage">Yoga Suggestion Message</string>
     <string name="OutsideSuggestionMessage">Go Outside Suggestion Message</string>
@@ -26,9 +26,11 @@
     <!--Suggestion switches-->
     <string name="Sadness_detection">Sadness Detection</string>
     <string name="Anger_detection">Anger Detection</string>
+    <string name="Happy_detection">Happiness Detection</string>
 
     <string name="WhaleSong">Whales</string>
     <string name="Violins">Violins</string>
+    <string name="Bus">Bus</string>
 
     <!--Buttons-->
     <string name="save">Save</string>

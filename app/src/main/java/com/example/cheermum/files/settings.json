@@ -1,1 +1,1 @@
-{"sadness_detection":  true, "anger_detection":  true, "sadness_music":  "Violins", "angry_music":  "Whales", "Volume": "50%"}
+{"sadness_detection":  true, "anger_detection":  true, "happiness_detection": true, "happy_music": "Bus", "sadness_music":  "Violins", "angry_music":  "Whales", "Volume": "50%"}
