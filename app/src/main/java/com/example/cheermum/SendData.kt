@@ -11,8 +11,8 @@ fun sendData(file: File): String{
     thread {
         try {
             val jsch = JSch()
-            val session = jsch.getSession("matt", "10.0.2.2", 22)//10.0.2.2 is localhost from android-studio's point of view
-            session.setPassword("your password here")
+            val session = jsch.getSession("admin", "192.168.0.103", 22)//10.0.2.2 is localhost from android-studio's point of view
+            session.setPassword("admin")
             session.setConfig("StrictHostKeyChecking", "no")
             session.connect()
 
@@ -25,7 +25,7 @@ fun sendData(file: File): String{
 
             val channel = session.openChannel("sftp") as ChannelSftp
             channel.connect()
-            channel.put(file.toString(), "/home/matt/Desktop/D_drive/Uni_stuff/eng40011/settings.json")
+            channel.put(file.toString(), "/home/admin/Desktop/eng40011/settings.json")
 
             channel.disconnect()
         } catch (e: Exception) {

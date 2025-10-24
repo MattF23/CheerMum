@@ -45,7 +45,6 @@ class SuggestionConfigActivity : ComponentActivity(){
         else{
             settings = JSONObject(file.inputStream().readBytes().toString(Charsets.UTF_8))
         }
-
         setRadioButtons(settings)
 
         //switches
