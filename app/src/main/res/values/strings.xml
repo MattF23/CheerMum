@@ -11,11 +11,9 @@
     <!--Text Wifi Config-->
     <string name="Wifi_Welcome">Before your Bear can connect to your phone. It needs to connect to your local network.
         \nPlug your phone into your Bear and enter you wifi name and password to begin.</string>
-    <string name="uuid">Wifi uuid</string>
-    <string name="password">Wifi password</string>
+    <string name="uuid">Your bear\'s ip address</string>
     <!--Buttons-->
     <string name="Home">Go Home</string>
-    <string name="submit">Send</string>
 
     <!--Text Settings Config-->
     <string name="Settings_tutorial">Configure All your settings here!</string>

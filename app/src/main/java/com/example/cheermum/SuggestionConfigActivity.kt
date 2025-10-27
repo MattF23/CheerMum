@@ -112,7 +112,10 @@ class SuggestionConfigActivity : ComponentActivity(){
         val message = settings.toString()
         file.writeText(message)
 
-        val result = sendData(file)
+        val ipFile = File(filesDir, "ip.json")
+        val ipSettings = JSONObject(ipFile.inputStream().readBytes().toString(Charsets.UTF_8))
+
+        val result = sendData(file, ipSettings)
 
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
     }
