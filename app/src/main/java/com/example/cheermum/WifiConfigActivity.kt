@@ -20,11 +20,11 @@ class WifiConfigActivity : ComponentActivity(){
         setContentView(R.layout.wifi_config)
 
         //Information!
-        val ip = findViewById<EditText>(R.id.WifiName).text.toString()
+        val ip = findViewById<EditText>(R.id.Ip)
 
         //save data button
         findViewById<Button>(R.id.Submit_wifi).setOnClickListener {
-            val settings = JSONObject(mapOf("ip" to ip))
+            val settings = JSONObject(mapOf("ip" to ip.text.toString()))
 
             val file = File(filesDir, "ip.json")
             file.writeText(settings.toString())
